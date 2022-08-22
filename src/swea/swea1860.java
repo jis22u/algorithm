@@ -6,7 +6,8 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 
-// *** 입장을 다르게 생각해보면 코드가 더 간결해질 수 있다 ***
+// 진기의 최고급 붕어빵
+// 1. 입장을 다르게 생각해보면 코드가 더 간결해질 수 있다 ***
 public class swea1860 {
 
 	public static void main(String[] args) throws NumberFormatException, IOException {
