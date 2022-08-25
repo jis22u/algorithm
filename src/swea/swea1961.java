@@ -7,15 +7,14 @@ import java.util.StringTokenizer;
 
 public class swea1961 {
 
-	static int n;
-	static int[][] arr;
-	static StringBuilder sb;
-
 	public static void main(String[] args) throws IOException {
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int T = Integer.parseInt(br.readLine());
 
+		int n;
+		int[][] arr;
+		StringBuilder sb;
 		StringTokenizer st;
 		for (int t = 1; t <= T; t++) {
 			// 배열에 넣기
@@ -27,53 +26,45 @@ public class swea1961 {
 					arr[i][j] = Integer.parseInt(st.nextToken());
 				}
 			}
-
 			
-			String[][] ans = new String[n][3];
-			for (int i = 0; i < n; i++) {
-				for (int j = 0; j < 3; j++) {
-					ans[i][0] = first(n-1, j);
-					ans[i][1] = second(n-1-j, n-1);
-					ans[i][2] = third(0, n-1-j);
-				}
-			}
-			
+//			tc 1.
+//			arr[2][0]   arr[2][2]	arr[0][2]
+//			arr[1][0]   arr[2][1]	arr[1][2]
+//			arr[0][0]   arr[2][0]	arr[2][2]
+//			0,0			0,1			0,2
+//			
+//			arr[2][1]	arr[1][2]	arr[0][1]
+//			arr[1][1]	arr[1][1]	arr[1][1]
+//			arr[0][1]	arr[1][0]	arr[2][1]
+//			1,0			1,1			1,2
+//					
+//			arr[2][2]	arr[0][2]	arr[0][0]
+//			arr[1][2]	arr[0][1]	arr[1][0]
+//			arr[0][2]	arr[0][0]	arr[2][0]
+//			2,0			2.1			2,2
+									
 			sb = new StringBuilder();
-			for(int j =0; j<3; j++) {
-				for(int i =0; i<n; i++) {
-					sb.append(ans[i][j]+" ");
-				}
-				sb.delete(sb.length()-1, sb.length());
-				sb.append("\n");
+			StringBuilder[][] ans = new StringBuilder[n][3];
+			sb.append("#"+t+"\n");
+			for (int i = 0; i < n; i++) { 
+					for (int k = 0; k < n; k++) {
+						sb.append(arr[n - 1 - k][i]);
+					}
+					sb.append(" ");
+					
+					for (int k = n-1; k >= 0; k--) {
+						sb.append(arr[n-1-i][k]);
+					}
+					sb.append(" ");
+					for (int k = 0; k < n; k++) {
+						sb.append(arr[k][n-1-i]);
+					}
+					sb.append("\n");
 			}
-			
-			System.out.println("#"+t+"\n"+sb);
+			System.out.print(sb);
 		}
+
 
 	} // main
-
-	static String first(int a, int b) {
-		sb = new StringBuilder();
-		for (int i = a; i >= 0; i--) {
-			sb.append(arr[i][b]);
-		}
-		return sb.toString();
-	}
-
-	static String second(int b, int a) {
-		sb = new StringBuilder();
-		for (int i = a; i >= 0; i--) {
-			sb.append(arr[b][i]);
-		}
-		return sb.toString();
-	}
-
-	static String third(int a, int b) {
-		sb = new StringBuilder();
-		for (int i = a; i < n; i++) {
-			sb.append(arr[i][b]);
-		}
-		return sb.toString();
-	}
 
 }
