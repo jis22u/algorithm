@@ -10,7 +10,7 @@ import java.util.StringTokenizer;
 // 테케 3번부터 fail..
 
 
-
+// **거꾸로 생각해보기**
 //백만 장자 프로젝트
 public class swea1859_again {
 

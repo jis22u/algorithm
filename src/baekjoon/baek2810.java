@@ -8,7 +8,7 @@ import java.util.List;
 
 
 //컵홀더
-public class Main {
+public class baek2810 {
 
 	public static void main(String[] args) throws IOException {
 

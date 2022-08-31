@@ -1,6 +1,6 @@
 package swea;
 
-public class swea2817 {
+public class swea2817_again {
 	static int N;
 	static boolean[] check;
 	public static void main(String[] args) {
