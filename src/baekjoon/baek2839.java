@@ -2,65 +2,42 @@ package baekjoon;
 
 import java.util.Scanner;
 
+
+// 영묵님 코드 반영..
+// 그리디 알고리즘!!!!!
+// 가장 핵심 조건. 봉지의 '최소' 개수
+//				   최대한 적게 가져가는 경우
 public class baek2839 {
 
 	public static void main(String[] args) {
 
 		Scanner sc = new Scanner(System.in);
+		int num = sc.nextInt();
 
-		int n = sc.nextInt();
-
-		int m = n; // n값
-		int a; // 몫
-		int b = -1; // 나머지
-
-		int cnt = 0;
-		int cnt2 = 0;
-		int cnt3 = 0;
-		int cnt4 = 0;
 		int ans = 0;
-		loop: while (b != 0) {
-			if (m % 5 == 0) {
-				ans = m / 5;
-				b = m % 5;
-			} else {
-				ans = m / 5;
-				m = m % 5;
-				if (m % 3 == 0) {
-					ans += m / 3;
-					b = m % 3;
-				} else {
-//					cnt2 = -1;
-					break loop;
-				}
-			}
-		}
-		
-		b = -1;
-		loop: while (b != 0) {
-			if (m % 3 == 0) {
-				cnt = n / 3;
-				b = m % 3;
-			} else {
-				cnt = m / 3;
-				m = m % 3;
-				if (m % 5 == 0) {
-					cnt += m / 5;
-					b = m % 5;
-				} else {
-//					cnt2 = -1;
-					break loop;
-				}
-			}
-
-		}
-		if (cnt2 == -1) {
-			System.out.println(-1);
+			
+		if(num % 5 == 0) {
+			ans =  num / 5;
 		} else {
-//			int min = Math.min(cnt, ans);
-			System.out.println(cnt);
-			System.out.println(ans);
-		}
+			int tmp = num;
+			while(true) {
+				tmp -= 3;
+				ans++;
+				if(tmp%5 == 0) {
+					ans += (tmp/5);
+					break;
+				} else if (tmp == 1 || tmp == 2){
+					ans = -1;
+					break;
+				} else if (tmp == 0){
+					break;
+				}
+			}
+		} 
+		
+		System.out.println(ans);
+		sc.close();
+
 	} // main
 
 }
