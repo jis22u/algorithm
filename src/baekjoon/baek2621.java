@@ -6,6 +6,9 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
+
+// 해당하지 않는 경우의 수가 너무 많을 땐 else로 처리하려 하지 말고
+// 처음부터 해당하는 경우를 촘촘히 설계해서 빠져나가지 않도록 코딩한다.
 public class baek2621 {
 
 	static String[] color;
