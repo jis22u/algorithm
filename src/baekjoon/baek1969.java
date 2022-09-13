@@ -14,13 +14,17 @@ public class baek1969 {
 		
 		int n = Integer.parseInt(st.nextToken());
 		int m = Integer.parseInt(st.nextToken());
-		int[][] ans = new int[m][4];  				 // 0:A 1:C 2:G 3:T
 		
+		// 0:A 1:C 2:G 3:T
+		int[][] ans = new int[m][4];  				 
+		
+		// DNA s1, s2 ... sn
 		String[] dna = new String[n];
 		for(int i=0; i<n; i++) {
 			dna[i] = br.readLine();
 		}
 		
+		// 열 우선 순회하듯
 		for(int j=0; j<m; j++) {
 			for(int i=0; i<n; i++) {
 				if(dna[i].charAt(j) == 'A') {
@@ -39,6 +43,7 @@ public class baek1969 {
 		int sum=0;
 		String str = "";
 		StringBuilder sb = new StringBuilder();
+		// 행 우선 순회
 		for(int i=0; i<m; i++) {
 			max=0;
 			int jj = 0;
