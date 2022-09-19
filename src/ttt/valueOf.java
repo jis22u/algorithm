@@ -1,8 +1,8 @@
 package ttt;
 
-
+// baek1747
 // 소수와 팰린드롬_김소진 코드
-public class baek1747_ttt {
+public class valueOf {
 
 	public static void main(String[] args) {
 

@@ -17,8 +17,10 @@ import java.util.Arrays;
 //	BCCBAABC
 //	ABBBCCAA
 
+
+// swea1215
 // 회문1_임영묵 코드에서
-public class swea1215_ttt {
+public class new_String {
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
