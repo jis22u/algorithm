@@ -26,8 +26,6 @@ public class 피보나치 {
 		dp = new BigInteger[n+2];
 		ori = new BigInteger("-1");
 		Arrays.fill(dp, ori);
-//		dp[0] = new BigInteger("0");
-//		dp[1] = new BigInteger("1");
 		dp[0] = BigInteger.ZERO;
 		dp[1] = BigInteger.ONE;
 		
@@ -66,7 +64,7 @@ public class 피보나치 {
 	static BigInteger[] dp;
 	static BigInteger fibo3(int n) {
 		if(dp[n].compareTo(ori) == 0) {
-			for(int i = 2; i<=n; i++) {
+			for(int i = 2; i <= n; i++) {
 				dp[i] = dp[i-2].add(dp[i-1]);
 			}
 		}
