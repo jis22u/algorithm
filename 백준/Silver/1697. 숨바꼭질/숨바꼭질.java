@@ -1,3 +1,4 @@
+
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -24,6 +25,7 @@ public class Main {
 		boolean[] check = new boolean[100001];
 		Queue<Node> q = new LinkedList<>();
 		q.add(new Node(N, 0));
+		check[N] = true;
 		
 		int ans = 0;
 		while(!q.isEmpty()) {
