@@ -70,6 +70,7 @@ public class 파티 {
 		// 집으로 돌아오는 길~
 		dijkstra(X, 0);
 		
+		// 결과
 		int max = 0;
 		for(int i=1 ; i<=N; i++) {
 			int sum = distForParty[i]+distForHome[i];
