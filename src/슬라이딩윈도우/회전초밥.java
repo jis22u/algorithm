@@ -47,7 +47,6 @@ public class 회전초밥 {
 		// (i + k) % N
 		// 스시를 k개 골라보자
 		// st부터 ed까지 통으로 움직여 > 슬라이딩 윈도우
-//		int cnt = cntTrue();
 		int ans = 0;
 		for (int i = 0; i < N; i++) {
 			
@@ -55,9 +54,8 @@ public class 회전초밥 {
 			select[arr[(i+k)%N]]++;
 			
 			
-			// 선택된 초밥 개수가 k개이면 쿠폰 초밥 더 먹어봐
 			if(ans <= cntTrue()) {
-				// 현재 선택된 초밥이랑 c랑 중복되지 않는지도 검사해야해
+				// c가 선택된적 없으면
 				if(select[c] == 0) {
 					select[c]++;
 					ans = cntTrue();
