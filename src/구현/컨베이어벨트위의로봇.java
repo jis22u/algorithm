@@ -1,20 +1,20 @@
 package 구현;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.StringTokenizer;
+import java.io.*;
+import java.util.*;
 
+// 틀림
 public class 컨베이어벨트위의로봇 {
 
-	static int N, K, A[];
+	static int N, K;
+	static int[] A;
 	static boolean[] robot;
 	public static void main(String[] args) throws IOException {
 
 	/**
 	 * 1) 회전=벨트랑 로봇이랑 int up, int down
 	 * 2) 해당 칸에 로봇이 있고, 앞칸에 로봇이 없으며, 해당 칸의 내구도가 1이상 일때
-	 * 3) 올리는 위치에 있는 칸의 내구도 != 0 이면 로봇올려
+	 * 3) 올리는 위치에 있는 칸의 내구도 >= 1 이면 로봇올려
 	 * 4) 내구도가 0인 칸의 개수 k개 이상이면, 종료
 	 */
 		
@@ -37,71 +37,64 @@ public class 컨베이어벨트위의로봇 {
 		int up = 0;
 		int down = N-1;
 		while(true) {
-			step++;
+			++step;
 			
-			// 1번 로봇상자 회전
-			회전(down, up);
-			
+			// 1번
+			up = (up+(2*N-1))%(2*N);
+			down = (down+(2*N-1))%(2*N);
+			turn(down);
 			
 			// 2번
-			이동(down, up);
+			move(down);
 			
 			// 3번
-			로봇올려(up);
+			putUp(up);
 			
 			// 4번
-			if(내구도()) {
+			if(power()) {
 				System.out.println(step);
 				break;
 			}
 
-			// 1번 벨트 회전
-			up = (up+(2*N-1))%(2*N);
-			down = (down+(2*N-1))%(2*N);
 		}
 		
 	} //main
 	
-	static void 회전(int down, int up) {
-		// 로봇 회전
-		for(int i=down-1; i>=up; i--) {
-			// 로봇이 있으면 앞으로 한칸
+	static void turn(int down) {
+		// 내리는 위치에 로봇 있으면 즉시 내리기
+		robot[down] = false;
+	}
+	
+	static void move(int down) {
+		// 가장 먼저 벨트에 올라간 것부터!!
+		for(int i=(2*N)-1; i>=0; i--) {
+			// 로봇이 있고
 			if(robot[i]) {
-				robot[i] = false;
-				robot[i+1] = true;
-			}
-			
-			// 이때 내리는 위치에 도달하면 즉시 내리기
-			if(i == down) {
-				robot[i] = false;
-			}
-		}
-	}
-	
-	static void 이동(int down, int up) {
-		for(int i=down; i>=up; i--) {
-			if(i == down && robot[down]) {
-				robot[down] = false;
-				continue;
-			}
-			
-			if(robot[i] && !robot[i+1] && A[i]>=1) {
-				robot[i] = false;
-				robot[i+1] = true;
-				A[i] -= 1;
+				// 앞에 로봇은 없으며, 내구도 1이상
+				if(!robot[(i+1)%(2*N)] && A[(i+1)%(2*N)] >= 1) {
+					// 한칸 전진 & 내구도 -1
+					robot[i] = false;
+					robot[(i+1)%(2*N)] = true;
+					A[(i+1)%(2*N)] -= 1;
+					
+					// 근데 이동한 위치가 내리는 위치라면 즉시 내려
+					if((i+1)%(2*N) == down) {
+						robot[(i+1)%(2*N)] = false;
+					}
+				}
 			}
 		}
 	}
 	
-	static void 로봇올려(int up) {
-		if(A[up] !=0 && !robot[up]) {
+	static void putUp(int up) {
+		if(A[up] >= 1 && !robot[up]) {
 			robot[up] = true;
 			A[up] -= 1;
 		}
 	}
 	
 	
-	static boolean 내구도() {
+	static boolean power() {
 		int cnt=0;
 		for(int i=0; i<2*N; i++) {
 			if(A[i] == 0) cnt++;
@@ -112,7 +105,5 @@ public class 컨베이어벨트위의로봇 {
 		}
 		return false;
 	}
-	
-	
 
 }
