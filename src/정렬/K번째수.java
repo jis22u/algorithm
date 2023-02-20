@@ -25,6 +25,13 @@ public class K번째수 {
             int size = j-i+1;
             int[] arr = new int[size];
             
+            // 배열 복사...
+//            arr = Arrays.copyOfRange(array, i-1, j);
+//            for(int a: arr) {
+//            	System.out.print(a+" ");
+//            }
+//            System.out.println();
+            
             // i부터 j까지 가져오기
             for(int p=0; p<size; p++) {
                 arr[p] = array[p+i-1];
