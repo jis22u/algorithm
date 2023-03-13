@@ -30,7 +30,7 @@ public class 좋다 {
 			int left = 0;
 			int right = N-1;
 			
-			while(left < right) {
+			while(left < right) {    
 				if(i==left) left += 1;
 				else if(i==right) right -= 1;
 				
