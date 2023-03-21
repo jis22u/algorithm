@@ -6,7 +6,7 @@ public class 프2016 {
 
 	    int a = 5;
 	    int b = 4;
-			String[] week = {"FRI", "SAT", "SUN", "MON", "TUE", "WED", "THU"};
+	    String[] week = {"FRI", "SAT", "SUN", "MON", "TUE", "WED", "THU"};
 	    int[] days = {0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
 	    String answer = "";
