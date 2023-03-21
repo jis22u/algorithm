@@ -24,4 +24,6 @@ public class 프2016 {
 		 }
 	     }
 	    System.out.println(answer);
+		
+	}
 }
