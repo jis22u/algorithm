@@ -5,9 +5,9 @@ import java.util.Stack;
 public class 짝지어제거하기 {
 
 	public static void main(String[] args) {
-		String s = "baabaa";
+	String s = "baabaa";
 		
-		 // 문자열 저장
+	// 문자열 저장
         char[] arr = s.toCharArray();
         // 처리 중인 문자들 저장
         Stack<Character> stack = new Stack<>();
