@@ -18,7 +18,5 @@ public class 최댓값과최솟값 {
 		// 정답 출력
 		String answer = num[0]+" "+num[num.length-1];
 		System.out.println(answer);
-		
 	}
-
 }
