@@ -1,3 +1,5 @@
+package 수학;
+
 import java.util.*;
 
 public class N개의최소공배수 {
