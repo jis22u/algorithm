@@ -8,7 +8,7 @@ public class 전광판 {
 	public static void main(String[] args) throws Exception {
 		// 0-9까지 전광판 현황 저장
 		boolean[][] numNeon = {
-		    {true, true, true, true, true, true, false},  // 0 
+		    {true, true, true, true, true, true, false},        // 0 
 		    {false, false, true, true, false, false, false},    // 1
 		    {false, true, true, false, true, true, true},       // 2
 		    {false, true, true, true, true, false, true},       // 3
@@ -35,34 +35,37 @@ public class 전광판 {
 		    int minlen = blen;
 		    String minStirng = a;
 		    String maxStirng = b;
+
 		    if(alen < blen) {
-			maxlen = blen; // 5
-			minlen = alen; // 4
-			minStirng = a; // 9881
+                	maxlen = blen;
+                	minlen = alen;
+                	minStirng = a;
+                	maxStirng = b;
 		    } else if (alen > blen) {
-			maxlen = alen;
-			minlen = blen;
-			minStirng = b;
+                	maxlen = alen;
+                	minlen = blen;
+                	minStirng = b;
+                	maxStirng = a;
 		    }
 
 		    int ans = 0;
 		    for(int i=minlen-1; i>=0; i--) {
-			for(int j=0; j<7; j++) {
-			    if(
-				numNeon[Integer.parseInt(""+minStirng.charAt(i))][j] != 
-				numNeon[Integer.parseInt(""+maxStirng.charAt(i+(maxlen-minlen)))][j]
-			    ) {
-				ans++;
-			    }
-			}
+                	for(int j=0; j<7; j++) {
+			if(
+			numNeon[Integer.parseInt(""+minStirng.charAt(i))][j] != 
+			numNeon[Integer.parseInt(""+maxStirng.charAt(i+(maxlen-minlen)))][j]
+			) {
+                    	ans++;
+                    	}
+              	    	}
 		    }
 
 		    for(int i=0; i<(maxlen-minlen); i++) {
 			for(int j=0; j<7; j++) {
-			    if(numNeon[Integer.parseInt(""+maxStirng.charAt(i))][j]) {
-				ans++;
-			    }
-			}
+                    	if(numNeon[Integer.parseInt(""+maxStirng.charAt(i))][j]) {
+                    	ans++;
+                    	}
+                	}
 		    }
 		    System.out.println(ans);
 		}
