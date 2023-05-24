@@ -23,6 +23,8 @@ public class 전광판 {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int T = Integer.parseInt(br.readLine());
 
+		// int[] A = new int[5];
+		// int[] B = new int[5];
 		for(int t=0; t<T; t++) {
 		    StringTokenizer st = new StringTokenizer(br.readLine());
 		    String a = st.nextToken();
