@@ -37,35 +37,35 @@ public class 전광판 {
 		    String maxStirng = b;
 
 		    if(alen < blen) {
-                maxlen = blen;
-                minlen = alen;
-                minStirng = a;
-                maxStirng = b;
+			maxlen = blen;
+			minlen = alen;
+			minStirng = a;
+			maxStirng = b;
 		    } else if (alen > blen) {
-                maxlen = alen;
-                minlen = blen;
-                minStirng = b;
-                maxStirng = a;
+			maxlen = alen;
+			minlen = blen;
+			minStirng = b;
+			maxStirng = a;
 		    }
 
 		    int ans = 0;
 		    for(int i=minlen-1; i>=0; i--) {
-                for(int j=0; j<7; j++) {
-                    if(
-                    numNeon[Integer.parseInt(""+minStirng.charAt(i))][j] != 
-                    numNeon[Integer.parseInt(""+maxStirng.charAt(i+(maxlen-minlen)))][j]
-                    ) {
-                    ans++;
-                    }
-                }
+                	for(int j=0; j<7; j++) {
+			    if(
+			    numNeon[Integer.parseInt(""+minStirng.charAt(i))][j] != 
+			    numNeon[Integer.parseInt(""+maxStirng.charAt(i+(maxlen-minlen)))][j]
+			    ) {
+			    ans++;
+			    }
+                	}
 		    }
 
 		    for(int i=0; i<(maxlen-minlen); i++) {
 			    for(int j=0; j<7; j++) {
-                    if(numNeon[Integer.parseInt(""+maxStirng.charAt(i))][j]) {
-                    ans++;
-                    }
-                }
+				    if(numNeon[Integer.parseInt(""+maxStirng.charAt(i))][j]) {
+				    ans++;
+				    }
+               	            }
 		    }
 		    System.out.println(ans);
 		}
