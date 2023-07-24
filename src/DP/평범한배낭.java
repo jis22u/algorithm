@@ -14,8 +14,8 @@ public class 평범한배낭 {
 		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
-		int N = Integer.parseInt(st.nextToken());
-		int K = Integer.parseInt(st.nextToken());
+		int N = Integer.parseInt(st.nextToken());    // N개의 물건
+		int K = Integer.parseInt(st.nextToken());    // 배낭은 최대 K만큼의 무게
 		
 		int[] weight = new int[N+1];
 		int[] value = new int[N+1];
