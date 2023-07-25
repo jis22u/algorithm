@@ -42,6 +42,7 @@ public class 상근이의여행 {
             visited = new boolean[N+1];
             dfs(1);
             System.out.println(cnt-1);  // 비행기는 정점이 아닌 간선이므로
+            System.out.println(N-1);
         }
     }
 
