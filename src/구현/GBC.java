@@ -3,7 +3,6 @@ package 구현;
 import java.util.*;
 import java.io.*;
 
-
 public class GBC
 {
     public static void main(String args[]) throws IOException
@@ -30,16 +29,22 @@ public class GBC
         }
 
         ArrayList<Integer> list = new ArrayList<>();
-        int k = 0;
-        for(int i=0; i<N; i++) {
-            for(int j=k; j<M; j++) {
-                if(flag[0][i] < gw[0][j]) {
-                    list.add(gw[1][j] - flag[1][i]);
-                    gw[0][j] = gw[0][j] - flag[0][i];
-                    k = j;
+        int r = 0;
+        int c = 0;
+        int val = 0;
+        while(r<N) {
+            while(c<M) {
+                val = (gw[1][c] - flag[1][r] < 0)? 0: gw[1][c] - flag[1][r];
+                list.add(val);
+                if(flag[0][r] < gw[0][c]) {
+                    gw[0][c] = gw[0][c] - flag[0][r];
+                    r++;
+                } else if(flag[0][r] > gw[0][c]){
+                    flag[0][r] = flag[0][r] - gw[0][c];
+                    c++;
                 } else {
-                    list.add(gw[1][j] - flag[1][i]);
-                    k = j+1;
+                    r++;
+                    c++;
                 }
                 break;
             }
