@@ -10,15 +10,17 @@ public class 로봇이지나간경로
     static char[] distance;
 
     static class Node {
-        int i, j;
+        int i, j, cnt;
         char dis;
+        List<Character> list;
 
-        Node(int i, int j, char dis) {
+        Node(int i, int j, char dis, List<Character> list, int cnt) {
             this.i = i;
             this.j = j;
             this.dis = dis;
+            this.list = list;
+            this.cnt = cnt;
         }
-
     }
 
     public static void main(String args[]) throws IOException
@@ -29,10 +31,12 @@ public class 로봇이지나간경로
         int W = Integer.parseInt(st.nextToken());
         map = new char[H][W];
         String line = "";
+        int sharpCnt = 0;
         for(int i=0; i<H; i++) {
             line = br.readLine();
             for(int j=0; j<W; j++) {
                 map[i][j] = line.charAt(j);
+                if(map[i][j] == '#') { sharpCnt++; }
             }
         }
 
@@ -41,9 +45,8 @@ public class 로봇이지나간경로
         char ansD = '.';
         List<Character> ans = new ArrayList<>();
 
-        Queue<Node> q = new LinkedList<>();
-        List<Character> list = new ArrayList<>();  // 조작 순서 저장
-        boolean[][] visited = new boolean[H][W];
+        Queue<Node> q;
+        boolean[][] visited;
         int cnt = Integer.MAX_VALUE;
 
         distance = new char[]{'^', '>', 'v', '<'};
@@ -59,14 +62,15 @@ public class 로봇이지나간경로
                     // 여기서부터 모든 위치의 모든 방향 탐색
                     for(int d=0; d<4; d++) {
                         q = new LinkedList<>();
-                        list = new ArrayList<>();
                         visited = new boolean[H][W];
 
-                        q.add(new Node(i, j, distance[d]));
+                        q.add(new Node(i, j, distance[d], new ArrayList<>(), 1));
                         visited[i][j] = true;
 
                         while(!q.isEmpty()) {
                             Node n = q.poll();
+                            List<Character> nlist = n.list;
+                            int nCnt = n.cnt;
 
                             for(int z=0; z<4; z++) {
                                 int nnr = n.i + ddr[z];
@@ -83,23 +87,26 @@ public class 로봇이지나간경로
                                 if(info[1] == 'X') continue;
 
                                 // 조작 순서 저장
-                                if(info[1] == 'S') { list.add('A'); }
-                                else if(info[1] == 'L') { list.add('L'); list.add('A'); }
-                                else { list.add('R'); list.add('A'); }
+                                if(info[1] == 'S') { nlist.add('A'); }
+                                else if(info[1] == 'L') { nlist.add('L'); nlist.add('A'); }
+                                else { nlist.add('R'); nlist.add('A'); }
 
                                 // 큐에 저장
-                                q.add(new Node(nnr, nnc, info[0]));
+                                q.add(new Node(nnr, nnc, info[0], nlist, nCnt+2));
                                 visited[nnr][nnc] = true;
                                 visited[nr][nc] = true;
                             }
-                        }
 
-                        // if(cnt > list.size()) {
-                        if(i==0 && j==7) {
-                            ans = list;
-                            ansR = i+1;
-                            ansC = j+1;
-                            ansD = distance[d];
+                            if(sharpCnt == nCnt) {
+                                if (cnt > nlist.size()) {
+                                    // if(i==0 && j==7) {
+                                    ans = nlist;
+                                    ansR = i + 1;
+                                    ansC = j + 1;
+                                    ansD = distance[d];
+                                    cnt = nlist.size();
+                                }
+                            }
                         }
                     }
                 }
