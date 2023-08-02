@@ -1,39 +1,26 @@
 package 완전탐색;
 
 public class 숫자의표현 {
-    static boolean[] visited;
     static int answer, target;
-    public static void main(String[] args) {
-        int n = 15;
-        visited = new boolean[n+1];
+    static int solution(int n) {
         answer = 0;
         target = n;
-        search(0);
-        System.out.println(answer);
+        for(int i=1; i<=target; i++) {
+            search(i, i);
+        }
+        return answer;
     }
 
-    static void search(int sum) {
-        if (sum == target) {
+    static void search(int sum, int n) {
+        if(sum == target) {
             answer++;
-            System.out.println(sum);
-            for(int i=1; i<=target; i++) {
-                if(visited[i]) {
-                    System.out.print(i+" ");
-                }
-            }
-            System.out.println();
             return;
-        }
+        } else if(sum > target) return;
 
-        for(int i=1; i<=target; i++) {
-            if(visited[i]) continue;
-            if(sum+i > target) {
-                break;
-            }
+        search(sum+n+1, n+1);
+    }
 
-            visited[i] = true;
-            search(sum+i);
-            visited[i] = false;
-        }
+    public static void main(String[] args) {
+        System.out.println(solution(10000));
     }
 }
