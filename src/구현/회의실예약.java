@@ -21,7 +21,7 @@ public class 회의실예약
         }
         // 회의실 이름을 기준으로 정렬해야 하므로
         List<String> keyList = new ArrayList<>(meeting.keySet());
-        keyList.sort((s1,s2) -> s1.compareTo(s2));
+        Collections.sort(keyList);
 
         // 주어진 입력값 대로 회의실 예약 현황 체크
         boolean[] reservation;
